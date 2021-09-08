@@ -1,0 +1,12 @@
+@charset "UTF-8";
+.hov-anim-box .animated {
+  display: none
+}
+
+.hov-anim-box:hover .animated {
+  display: inline
+}
+
+.hov-anim-box:hover .static {
+  display: none
+}
