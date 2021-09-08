@@ -11,19 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import enflix.model.Service;
 import enflix.model.dto.UserDTO;
 
-
 @WebServlet("/enflix")
 public class EnflixController extends HttpServlet {
-	
+
 	private static Service service = Service.getInstance();
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String command = request.getParameter("command");
 
 		try {
 			if (command.equals("insertUser")) {
 				insertUser(request, response);
+			}
+			else if (command.equals("signinUser")) {
+				signinUser(request, response);
 			}
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());
@@ -32,20 +35,19 @@ public class EnflixController extends HttpServlet {
 		}
 	}
 
-	private void insertUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void insertUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String url = "showError.jsp";
-		
+
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
 		int card = Integer.parseInt(request.getParameter("card"));
 		int age = Integer.parseInt(request.getParameter("age"));
 		String plan = request.getParameter("planType");
-		
 
 		if (email != null && email.length() != 0 && name != null) {
-			UserDTO user = new UserDTO(email, pw, name, card, age, plan);
-			System.out.println(user.getAge()+" "+user.getCard()+" "+user.getEmail());
+			UserDTO user = new UserDTO(email, pw, name, age, card, plan);
 			try {
 				boolean result = service.insertUser(user);
 				if (result) {
@@ -61,5 +63,23 @@ public class EnflixController extends HttpServlet {
 			request.getRequestDispatcher(url).forward(request, response);
 		}
 	}
-}
 
+	private void signinUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+
+		try {
+			UserDTO user = service.loginUser(request.getParameter("email"), request.getParameter("pw"));
+			if (user != null) {
+				request.setAttribute("user", user);
+				url = "welcome.jsp";
+			} else {
+				request.setAttribute("erroMsg", "일치하는 회원 정보가 없습니다.");
+			}
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+}

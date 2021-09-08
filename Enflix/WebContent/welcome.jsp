@@ -60,6 +60,7 @@ button:hover {
 	</div>
 	<div class="wrap">
 		<div class="msg">
+		<h1>{requestScope.user.email}</h1>
 			<h2>가입이 완료되었습니다.</h2>
 			<h3>엔플릭스만의 다양한 컨텐츠를 경험하세요</h3>
 			<button onclick="location.href='login.html'">로그인</button>

@@ -4,12 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="oracleDB">
-		<class>enflix.model.entity.Movie</class>
-		<class>enflix.model.entity.Payment</class>
-		<class>enflix.model.entity.Users</class>
-		<properties>
 
-		</properties>
 
 	</persistence-unit>
 </persistence>
