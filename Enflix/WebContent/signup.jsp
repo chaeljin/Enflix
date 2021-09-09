@@ -6,7 +6,7 @@
 <head>
 <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
 <meta charset="UTF-8">
-<title>Sign In</title>
+<title>Enflix</title>
 <style>
 .login {
 	width: 300px;

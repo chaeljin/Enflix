@@ -6,7 +6,8 @@
 <!DOCTYPE html>
 <html lang = "ko">
 <head>
-<title>Error page</title>
+<link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
+<title>Enflix</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

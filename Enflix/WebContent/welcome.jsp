@@ -2,8 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
+
 <meta charset="UTF-8">
-<title>Welcome page</title>
+<title>Enflix</title>
 <style>
 .msg {
 	width: 400px;
