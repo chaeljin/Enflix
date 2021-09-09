@@ -47,7 +47,7 @@ public class UserDAO {
 
 			user = new UserDTO(u.getEmail(), u.getPw(), u.getName(), u.getAge(), u.getCard(), u.getPlanType(),
 					u.getPaymentDate());
-
+			
 		} catch (Exception e) {
 			em.getTransaction().rollback();
 
@@ -91,7 +91,7 @@ public class UserDAO {
 		boolean result = false;
 
 		try {
-			em.persist(reas.toEntity());
+//			em.persist(reas.toEntity());
 			em.remove(em.find(Users.class, email));
 			
 			em.getTransaction().commit();

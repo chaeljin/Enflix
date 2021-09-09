@@ -12,9 +12,9 @@
 				value="oracle.jdbc.OracleDriver" />
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
-			<property name="javax.persistence.jdbc.user" value="SCOTT" />
+			<property name="javax.persistence.jdbc.user" value="hr" />
 			<property name="javax.persistence.jdbc.password"
-				value="tiger" />
+				value="hr" />
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.OracleDialect" />
 			<property name="hibernate.show_sql" value="true" />

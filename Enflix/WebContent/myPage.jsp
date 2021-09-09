@@ -80,10 +80,6 @@ p, h4 {
 	opacity: 0.8;
 }
 
-.logout {
-	display: flex;
-	justify-content: flex-end;
-}
 </style>
 
 </head>
@@ -107,9 +103,7 @@ p, h4 {
 		<h4>계정 정보</h4>
 		<span class="change" style="color: white">E-mail : ${sessionScope.user.email} <br> <a href="changePW.jsp">비밀번호 변경하기</a></span>
 		<p>${requestScope.errorMsg}</p>
-		<div class="logout">
-			<button class="logoutbtn" onclick="document.getElementById('logout').style.display='block'">로그아웃</button>
-		</div>
+		<button class="logoutbtn" onclick="document.getElementById('logout').style.display='block'">로그아웃</button><br>
 		<a href="byebye.jsp" style="color: red">회원 탈퇴하기</a>
 
 
@@ -117,8 +111,8 @@ p, h4 {
 	<div id="logout" class="w3-modal w3-animate-opacity">
 		<div class="w3-modal-content" style="background-color: #1a1a1a; padding: 32px; text-align: center; opacity: 0.9;">
 			<div class="w3-container" style="background-color: #1a1a1a; opacity: 0.9">
-				<i onclick="document.getElementById('logout').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
-				<h2 style="color: white">Search</h2>
+				<i onclick="document.getElementById('logout').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right" style="color: white"></i>
+				<h2 style="color: white; margin-left: 50px">로그아웃</h2>
 				<p style="color: white">로그아웃 하시겠습니까?</p>
 				<br>
 				<form action="./enflix" id=logout>
