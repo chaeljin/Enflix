@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script>
-	function refresh() {
-		location.reload();
-	}
-</script>
 
 <c:if test="${empty sessionScope.user.email}">
 	<%
@@ -15,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -80,10 +76,6 @@ p, h4 {
 	opacity: 0.8;
 }
 
-.logout {
-	display: flex;
-	justify-content: flex-end;
-}
 </style>
 
 </head>
@@ -100,16 +92,14 @@ p, h4 {
 	</div>
 
 	<div class="box">
-		<h4>${sessionScope.user.name}님의결제정보</h4>
+		<h4>${sessionScope.user.name}님의 결제정보</h4>
 		<p>이용 요금제 : ${sessionScope.user.planType}</p>
 		<p>결제 예정일 : 매월 ${sessionScope.user.paymentDate}일</p>
 		<br> <br>
 		<h4>계정 정보</h4>
 		<span class="change" style="color: white">E-mail : ${sessionScope.user.email} <br> <a href="changePW.jsp">비밀번호 변경하기</a></span>
 		<p>${requestScope.errorMsg}</p>
-		<div class="logout">
-			<button class="logoutbtn" onclick="document.getElementById('logout').style.display='block'">로그아웃</button>
-		</div>
+		<button class="logoutbtn" onclick="document.getElementById('logout').style.display='block'">로그아웃</button><br>
 		<a href="byebye.jsp" style="color: red">회원 탈퇴하기</a>
 
 
@@ -117,8 +107,8 @@ p, h4 {
 	<div id="logout" class="w3-modal w3-animate-opacity">
 		<div class="w3-modal-content" style="background-color: #1a1a1a; padding: 32px; text-align: center; opacity: 0.9;">
 			<div class="w3-container" style="background-color: #1a1a1a; opacity: 0.9">
-				<i onclick="document.getElementById('logout').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
-				<h2 style="color: white">Search</h2>
+				<i onclick="document.getElementById('logout').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right" style="color: white"></i>
+				<h2 style="color: white; margin-left: 50px">로그아웃</h2>
 				<p style="color: white">로그아웃 하시겠습니까?</p>
 				<br>
 				<form action="./enflix" id=logout>

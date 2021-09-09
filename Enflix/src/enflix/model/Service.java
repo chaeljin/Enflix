@@ -29,7 +29,11 @@ public class Service {
 		UserDTO user = userDAO.loginUser(email, pw);
 
 		if (user == null) {
-			throw new NotExistException("일치하는 회원 정보가 없습니다.");
+			if(userDAO.findUser(email) != null) {
+				throw new NotExistException("비밀번호가 틀렸습니다");
+			}else {
+				throw new NotExistException("이메일을 다시 한번 확인해주세요");
+			}
 		}
 		return user;
 	}
@@ -40,6 +44,18 @@ public class Service {
 			throw new NotExistException("일치하는 회원 정보가 없습니다.");
 		}
 		return user;
+	}
+	
+	public boolean findUser2(String email) throws SQLException, NotExistException {
+		boolean result = false;
+		
+		UserDTO user = userDAO.findUser(email);
+		
+		if (user == null) {
+			result = true;
+		}
+		
+		return result;
 	}
 
 	public boolean updateUser(String email, String pw, String nPw)

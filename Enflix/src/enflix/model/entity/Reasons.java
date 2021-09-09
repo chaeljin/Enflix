@@ -17,11 +17,15 @@ import lombok.Setter;
 @Entity
 public class Reasons {
 	@Id
+	private String email;
 	private String reason;
-
+	
+	
 	@Override
 	public String toString() {
-		return "Reason [reason=" + reason + "]";
+		return "Reasons [email=" + email + ", reason=" + reason + "]";
 	}
+
+
 
 }

@@ -59,13 +59,19 @@ public class EnflixController extends HttpServlet {
 		if (email != null && email.length() != 0 && name != null) {
 			UserDTO user = new UserDTO(email, pw, name, age, card, plan, date);
 			try {
-				boolean result = service.insertUser(user);
-				if (result) {
-					request.setAttribute("user", user);
-					request.setAttribute("successMsg", "가입이 완료되었습니다.");
-					url = "welcome.jsp";
-				} else {
-					request.setAttribute("errorMsg", "다시 시도하세요");
+				boolean result2 = service.findUser2(email);
+				
+				if(result2) {
+					boolean result = service.insertUser(user);
+					if (result) {
+						request.setAttribute("user", user);
+						request.setAttribute("successMsg", "가입이 완료되었습니다.");
+						url = "welcome.jsp";
+					} else {
+						request.setAttribute("errorMsg", "다시 시도하세요");
+					}
+				}else {
+					request.setAttribute("errorMsg", "이미 있는 이메일입니다. 다시 확인해주세요");
 				}
 			} catch (Exception s) {
 				request.setAttribute("errorMsg", s.getMessage());
@@ -114,10 +120,12 @@ public class EnflixController extends HttpServlet {
 				request.setAttribute("user", service.findUser(request.getParameter("email")));
 				HttpSession session = request.getSession();
 				session.invalidate();
-				response.sendRedirect("success.jsp");
+				
+				request.setAttribute("successMsg", "비밀번호가 변경되었습니다.");
+				request.getRequestDispatcher("success.jsp").forward(request, response);
 
 			} else {
-				request.setAttribute("errorMsg", "비밀번호 수정에 실패했습니다.");
+				request.setAttribute("errorMsg", "비밀번호 변경에 실패했습니다.");
 				request.getRequestDispatcher(url).forward(request, response);
 			}
 		} catch (Exception s) {
@@ -136,7 +144,8 @@ public class EnflixController extends HttpServlet {
 			if (result) {
 				HttpSession session = request.getSession();
 				session.invalidate();
-				response.sendRedirect("main.html");
+				request.setAttribute("successMsg", "회원 탈퇴 되었습니다.");
+				request.getRequestDispatcher("success.jsp").forward(request, response);
 			} else {
 				request.setAttribute("errorMsg", "탈퇴에 실패했습니다.");
 				request.getRequestDispatcher(url).forward(request, response);

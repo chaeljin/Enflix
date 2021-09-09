@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
 <meta charset="UTF-8">
 <title>Sign In</title>
 <style>

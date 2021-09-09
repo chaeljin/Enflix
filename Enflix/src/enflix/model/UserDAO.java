@@ -87,7 +87,10 @@ public class UserDAO {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		
-		ReasonDTO reas = new ReasonDTO(reason);
+		ReasonDTO reas = new ReasonDTO();
+		reas.setEmail(email);
+		reas.setReason(reason);
+		
 		boolean result = false;
 
 		try {

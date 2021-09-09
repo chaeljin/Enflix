@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
 <meta charset="UTF-8">
 <title>Byebye</title>
 <style>

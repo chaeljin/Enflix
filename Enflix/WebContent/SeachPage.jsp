@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+
+<c:if test="${empty sessionScope.user.email}">
+	<%
+		response.sendRedirect("check.jsp");
+	%>
+</c:if>
+
 <!DOCTYPE html>
 <html>
 <head>

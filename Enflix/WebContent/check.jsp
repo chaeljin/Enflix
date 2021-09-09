@@ -26,7 +26,7 @@
 			
 			<br><br><br><br><br><br>
 			
-			<h3 class="w3-text-white" style="text-align: center; font-size: 100px">로그인 후 이용 가능한 페이지입니다.</h3>
+			<h3 class="w3-text-white" style="text-align: center; font-size: 50px">로그인 후 이용 가능한 페이지입니다.</h3>
 				
 			<br><br><br>
 			<a class="w3-text-white" href="${pageContext.request.contextPath}/main.html" style="text-align: center;">메인으로 이동하기</a>

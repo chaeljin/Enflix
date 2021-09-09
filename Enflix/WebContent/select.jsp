@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.ico">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -261,8 +262,8 @@
 	<div id="logout" class="w3-modal w3-animate-opacity">
 		<div class="w3-modal-content" style="background-color: #1a1a1a; padding: 32px; text-align: center; opacity: 0.9;">
 			<div class="w3-container" style="background-color: #1a1a1a; opacity: 0.9">
-				<i onclick="document.getElementById('logout').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
-				<h2 style="color: white">Search</h2>
+				<i onclick="document.getElementById('logout').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right" style="color: white"></i>
+				<h2 style="color: white; margin-left: 50px;">로그아웃</h2>
 				<p style="color: white">로그아웃 하시겠습니까?</p>
 				<br>
 				<form action="./enflix" id=logout>
