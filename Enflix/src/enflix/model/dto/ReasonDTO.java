@@ -14,15 +14,14 @@ import lombok.Setter;
 @Builder
 public class ReasonDTO {
 	
-	private String email;
 	private String reason;
 
 	public Reasons toEntity() {
-		return Reasons.builder().email(email).reason(reason).build();
+		return Reasons.builder().reason(reason).build();
 	}
 
 	@Override
 	public String toString() {
-		return "Reasons [email=" + email + ", reason=" + reason + "]";
+		return "Reasons [reason=" + reason + "]";
 	}
 }

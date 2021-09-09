@@ -30,7 +30,8 @@
 			<h3 class="w3-text-white" style="text-align: center; font-size: 50px">${errorMsg}</h3>
 				
 			<br><br><br>
-			<a class="w3-text-white" href="${pageContext.request.contextPath}/main.html">메인 화면으로 이동하기</a>
+				<a class="w3-text-white" href="${pageContext.request.contextPath}/login.html" style="margin-right: 50px;">로그인 화면으로 이동하기</a>
+				<a class="w3-text-white" href="${pageContext.request.contextPath}/main.html">메인 화면으로 이동하기</a>
 		</header>
 		</div>
 

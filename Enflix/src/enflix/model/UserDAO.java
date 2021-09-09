@@ -88,7 +88,6 @@ public class UserDAO {
 		em.getTransaction().begin();
 		
 		ReasonDTO reas = new ReasonDTO();
-		reas.setEmail(email);
 		reas.setReason(reason);
 		
 		boolean result = false;
