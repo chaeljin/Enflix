@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Sign In</title>
+<title>비밀번호 변경</title>
 <style>
 .login {
 	width: 300px;
@@ -45,6 +43,7 @@ button {
 	height: 40px;
 	border-radius: 5px;
 }
+
 select {
 	width: 100%;
 	height: 30px;
@@ -55,6 +54,7 @@ select {
 	box-sizing: border-box;
 	border-radius: 5px;
 }
+
 .cancel {
 	background-color: grey;
 	color: white;
@@ -97,25 +97,12 @@ button:hover {
 	</div>
 	<div class="wrap">
 		<div class="login">
-			<h1>회원가입</h1>
+			<h1>비밀번호 변경</h1>
 			<div class="container">
 				<form action="./enflix" method="post" id=userinfo>
-					<input type="hidden" name="command" value="insertUser"> 
-					<input type="email" placeholder="이메일을 입력하세요" name="email" required> 
-					<input type="password" placeholder="비밀번호를 입력하세요" name="pw" required> <br> 
-					<input type="text" placeholder="이름을 입력하세요" name="name" required> <br> 
-					<input type="number" placeholder="나이를 입력하세요" name="age" required min="1" max="150"> <br>
-					<input type="text" placeholder="카드 번호를 입력하세요" name="card" required> <br> 
-					<p style="font-size:3px; text-align:left">요금제를 선택하세요</p>
-					<select id="userinfo" name="planType">
-						<option value="Basic">Basic</option>
-						<option value="Premium">Premium</option>
-					</select>
-					<br>
-					<input class="join" type="submit" value="회원가입">&nbsp;&nbsp;&nbsp;<input class="cancel" type="reset" value="초기화">
+					<input type="hidden" name="command" value="updateUser"> <input type="hidden" name="email" value="${sessionScope.user.email}"> <input type="password" placeholder="비밀번호를 입력하세요" name="pw" required> <br> <input type="text" placeholder="새로운 비밀번호를 입력하세요" name="newPw" required> <br> <br> <input class="join" type="submit" value="비밀번호 변경">&nbsp;&nbsp;&nbsp;<input class="cancel" type="reset" value="초기화">
 				</form>
 			</div>
-
 		</div>
 	</div>
 </body>

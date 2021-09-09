@@ -1,6 +1,7 @@
 package enflix.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +28,12 @@ public class EnflixController extends HttpServlet {
 				insertUser(request, response);
 			} else if (command.equals("signinUser")) {
 				signinUser(request, response);
+			} else if (command.equals("logoutUser")) {
+				logoutUser(request, response);
+			} else if (command.equals("updateUser")) {
+				updateUser(request, response);
+			} else if (command.equals("byeUser")) {
+				deleteUser(request, response);
 			}
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());
@@ -39,6 +46,9 @@ public class EnflixController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 
+		LocalDate now = LocalDate.now();
+		int date = now.getDayOfMonth();
+
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
@@ -47,7 +57,7 @@ public class EnflixController extends HttpServlet {
 		String plan = request.getParameter("planType");
 
 		if (email != null && email.length() != 0 && name != null) {
-			UserDTO user = new UserDTO(email, pw, name, age, card, plan);
+			UserDTO user = new UserDTO(email, pw, name, age, card, plan, date);
 			try {
 				boolean result = service.insertUser(user);
 				if (result) {
@@ -77,8 +87,8 @@ public class EnflixController extends HttpServlet {
 			} else {
 				request.setAttribute("erroMsg", "일치하는 회원 정보가 없습니다.");
 				request.getRequestDispatcher("showError.jsp").forward(request, response);
-
 			}
+
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
@@ -86,11 +96,56 @@ public class EnflixController extends HttpServlet {
 		}
 	}
 
-//	private void updateUser(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		String url = "showError.jsp";
-//		try {
-//			request.setAttribute("user", service.updateUser(request.getParameter("pw")));
-//		}
-//	}
+	private void logoutUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		response.sendRedirect("main.html");
+	}
+
+	private void updateUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "myPage.jsp";
+		
+		try {
+			boolean result = service.updateUser(request.getParameter("email"), request.getParameter("pw"),
+					request.getParameter("newPw"));
+			if (result) {
+				request.setAttribute("user", service.findUser(request.getParameter("email")));
+				HttpSession session = request.getSession();
+				session.invalidate();
+				response.sendRedirect("success.jsp");
+
+			} else {
+				request.setAttribute("errorMsg", "비밀번호 수정에 실패했습니다.");
+				request.getRequestDispatcher(url).forward(request, response);
+			}
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+	}
+	
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "myPage.jsp";
+		
+		try {
+			boolean result = service.deleteUser(request.getParameter("email"), request.getParameter("pw"), request.getParameter("reason"));
+			if (result) {
+				HttpSession session = request.getSession();
+				session.invalidate();
+				response.sendRedirect("main.html");
+			} else {
+				request.setAttribute("errorMsg", "탈퇴에 실패했습니다.");
+				request.getRequestDispatcher(url).forward(request, response);
+			}
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			request.getRequestDispatcher(url).forward(request, response);
+			s.printStackTrace();
+		}
+		
+	}
 }

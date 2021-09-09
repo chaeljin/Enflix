@@ -15,18 +15,13 @@ import lombok.Setter;
 @Setter
 @Builder
 @Entity
-public class Movie {
+public class Reasons {
 	@Id
-	private String name;
-	private String genre;
-	private String director;
-	private int age;
-	private String planType;
-	
+	private String reason;
+
 	@Override
 	public String toString() {
-		return "Movie [name=" + name + ", genre=" + genre + ", director=" + director + ", age=" + age + ", planType="
-				+ planType + "]";
+		return "Reason [reason=" + reason + "]";
 	}
-	
+
 }

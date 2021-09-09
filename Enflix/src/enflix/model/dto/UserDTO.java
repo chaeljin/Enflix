@@ -19,15 +19,16 @@ public class UserDTO {
 	private int age;
 	private int card;
 	private String planType;
+	private int paymentDate;
 	
 	public Users toEntity() {
-		return Users.builder().email(email).pw(pw).name(name).age(age).card(card).planType(planType).build();
+		return Users.builder().email(email).pw(pw).name(name).age(age).card(card).planType(planType).paymentDate(paymentDate).build();
 	}
 
 	@Override
 	public String toString() {
 		return "UserDTO [email=" + email + ", pw=" + pw + ", name=" + name + ", age=" + age + ", card=" + card
-				+ ", planType=" + planType + "]";
+				+ ", planType=" + planType + "paymentDate="+paymentDate+"]";
 	}
 
 }

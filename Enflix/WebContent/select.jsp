@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+
+<c:if test="${empty sessionScope.user.email}">
+	<%
+		response.sendRedirect("check.jsp");
+	%>
+</c:if>
 
 <!DOCTYPE html>
 <html>
@@ -68,10 +75,27 @@
 .dropdown:hover .dropbtn {
 	background-color: #3e8e41;
 }
+
+.logoutmodal {
+	background-color: red;
+	color: white;
+	padding: 10px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 40%;
+	height: 40px;
+	border-radius: 5px;
+}
+
+.logoutmodal:hover {
+	opacity: 0.8;
+}
 </style>
 </head>
 
 <body style="background-color: black">
+
 	<div class="w3-padding-large">
 		<!-- Header -->
 		<header class="w3-container w3-padding-32 w3-center w3-balck">
@@ -84,7 +108,7 @@
 				<div class="dropdown-content">
 					<a href="#" class="w3-bar-item w3-button">${sessionScope.user.name}님</a>
 					<a href="myPage.jsp" class="w3-bar-item w3-button">마이 페이지</a>
-					<a href="#" class="w3-bar-item w3-button">로그 아웃</a>
+					<a href="#" class="w3-bar-item w3-button" onclick="document.getElementById('logout').style.display='block'">로그 아웃</a>
 				</div>
 			</div>
 			<i class="fa fa-search w3-opacity-off w3-hover-opacity" onclick="document.getElementById('search').style.display='block'" style="font-size: 30px; color: white;"></i>
@@ -223,15 +247,30 @@
 	<div id="search" class="w3-modal w3-animate-opacity">
 		<div class="w3-modal-content" style="background-color: #1a1a1a; padding: 32px; text-align: center; opacity: 0.9;">
 			<div class="w3-container" style="background-color: #1a1a1a; opacity: 0.9">
-				<i onclick="document.getElementById('search').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
+				<i onclick="document.getElementById('search').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right" style="color: white"></i>
 				<h2 style="color: white">Search</h2>
 				<p style="color: white">검색하고 싶은 영상의 이름을 입력해주세요</p>
-				<p>
-					<input class="w3-input w3-border" type="text" placeholder="Enter Search">
-				</p>
-				<button type="button" class="modalbtn" onclick="document.getElementById('search').style.display='none'">Search</button>
+				<form action="searchPage">
+		        	<p><input class="w3-input w3-border" type="text" placeholder="Enter Search" name="search"></p>
+		           <input type="submit" value="Search" class="modalbtn" style="border-radius: 10px;">
+		        </form>
 			</div>
 		</div>
 	</div>
+	
+	<div id="logout" class="w3-modal w3-animate-opacity">
+		<div class="w3-modal-content" style="background-color: #1a1a1a; padding: 32px; text-align: center; opacity: 0.9;">
+			<div class="w3-container" style="background-color: #1a1a1a; opacity: 0.9">
+				<i onclick="document.getElementById('logout').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
+				<h2 style="color: white">Search</h2>
+				<p style="color: white">로그아웃 하시겠습니까?</p>
+				<br>
+				<form action="./enflix" id=logout>
+					<input type="hidden" name="command" value="logoutUser"> <input type="submit" class="modalbtn" value="로그아웃">
+				</form>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

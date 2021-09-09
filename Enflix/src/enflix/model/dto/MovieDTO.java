@@ -21,7 +21,7 @@ public class MovieDTO {
 	private String rating;
 	
 	public Movie toEntity() {
-		return Movie.builder().name(name).genre(genre).director(director).age(age).rating(rating).build();
+		return Movie.builder().name(name).genre(genre).director(director).age(age).planType(rating).build();
 	}
 
 	@Override

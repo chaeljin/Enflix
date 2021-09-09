@@ -26,11 +26,53 @@ public class Service {
 	}
 
 	public UserDTO loginUser(String email, String pw) throws SQLException, NotExistException {
-		UserDTO user = userDAO.findUser(email, pw);
-		
-		if(user == null) {
+		UserDTO user = userDAO.loginUser(email, pw);
+
+		if (user == null) {
 			throw new NotExistException("일치하는 회원 정보가 없습니다.");
 		}
 		return user;
+	}
+
+	public UserDTO findUser(String email) throws SQLException, NotExistException {
+		UserDTO user = userDAO.findUser(email);
+		if (user == null) {
+			throw new NotExistException("일치하는 회원 정보가 없습니다.");
+		}
+		return user;
+	}
+
+	public boolean updateUser(String email, String pw, String nPw)
+			throws SQLException, NotExistException, MessageException {
+		boolean result = false;
+		UserDTO user = userDAO.findUser(email);
+		String oldPw = user.getPw();
+		if (!pw.equals(oldPw)) {
+			throw new NotExistException("비밀번호를 확인해주세요");
+		} else if (nPw.equals(oldPw)) {
+			throw new MessageException("같은 비밀번호로는 바꿀 수 없습니다.");
+		} else {
+			result = userDAO.updateUser(email, pw, nPw);
+			if (!result) {
+				throw new NotExistException("정보 수정에 실패했습니다.");
+			}
+		}
+		return result;
+	}
+
+	public boolean deleteUser(String email, String pw, String reason)
+			throws SQLException, NotExistException, MessageException {
+		boolean result = false;
+		UserDTO user = userDAO.findUser(email);
+		String oldPw = user.getPw();
+		if (!pw.equals(oldPw)) {
+			throw new NotExistException("비밀번호를 확인해주세요");
+		} else {
+			result = userDAO.deleteUser(email, pw, reason);
+			if (!result) {
+				throw new MessageException("회원 탈퇴에 실패했습니다.");
+			}
+			return result;
+		}
 	}
 }

@@ -25,11 +25,12 @@ public class Users {
 	@JoinColumn
 	private int card;
 	private String planType;
+	private int paymentDate;
 
 	@Override
 	public String toString() {
 		return "User [email=" + email + ", pw=" + pw + ", name=" + name + ", age=" + age + ", card=" + card
-				+ ", planType=" + planType + "]";
+				+ ", planType=" + planType + "paymentDate=" + paymentDate+"]";
 	}
 
 }

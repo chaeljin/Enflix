@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>main</title>
+
 <style>
 .biglogo {
 	position: absolute;
@@ -12,21 +13,18 @@
 }
 
 .mainlogo {
-	display: block; 
+	display: block;
 	float: center;
 	text-align: center;
 }
 
 .introduce {
-	margin-top: 100px;
-	width: 600px;
-	margin: auto;
+	margin-top: 450px;
 	color: white;
-	width: 600px;
 	text-align: center;
 }
 
-button {
+.loginbtn {
 	background-color: red;
 	font-size: 15px;
 	color: white;
@@ -40,7 +38,7 @@ button {
 	background-color: red;
 }
 
-button:hover {
+.loginbtn:hover {
 	opacity: 0.8;
 }
 
@@ -51,8 +49,9 @@ button:hover {
 </style>
 </head>
 <body style="background-color: black">
+
 	<div class="login">
-		<button onclick="location.href='login.html'">로그인</button>
+		<button class="loginbtn" onclick="location.href='login.html'">로그인</button>
 	</div>
 	<div class="mainlogo">
 		<a href="main.html">
