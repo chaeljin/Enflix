@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import enflix.model.Service;
 import enflix.model.dto.UserDTO;
@@ -24,8 +25,7 @@ public class EnflixController extends HttpServlet {
 		try {
 			if (command.equals("insertUser")) {
 				insertUser(request, response);
-			}
-			else if (command.equals("signinUser")) {
+			} else if (command.equals("signinUser")) {
 				signinUser(request, response);
 			}
 		} catch (Exception e) {
@@ -66,20 +66,31 @@ public class EnflixController extends HttpServlet {
 
 	private void signinUser(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "showError.jsp";
-
 		try {
 			UserDTO user = service.loginUser(request.getParameter("email"), request.getParameter("pw"));
 			if (user != null) {
 				request.setAttribute("user", user);
-				url = "welcome.jsp";
+
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
+				response.sendRedirect("select.jsp");
 			} else {
 				request.setAttribute("erroMsg", "일치하는 회원 정보가 없습니다.");
+				request.getRequestDispatcher("showError.jsp").forward(request, response);
+
 			}
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
+			request.getRequestDispatcher("showError.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
+
+//	private void updateUser(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		String url = "showError.jsp";
+//		try {
+//			request.setAttribute("user", service.updateUser(request.getParameter("pw")));
+//		}
+//	}
 }

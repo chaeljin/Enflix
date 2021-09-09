@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import enflix.exception.MessageException;
 import enflix.model.dto.UserDTO;
 import enflix.model.entity.Users;
 import model.util.DBUtil;
@@ -37,8 +38,10 @@ public class UserDAO {
 		}
 		return result;
 	}
-
-
+	
+	/*
+	 * id와 비밀번호로 회원 찾기
+	 */
 	public UserDTO findUser(String email, String pw) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
@@ -46,17 +49,28 @@ public class UserDAO {
 		try {
 			System.out.println(pw);
 			Users u = em.find(Users.class, email);
-			System.out.println("********"+u.getPw());
 	
-			if (pw == u.getPw()) {
+			if (pw.equals(u.getPw())) {
+				System.out.println(u.getEmail());
 				user = new UserDTO(u.getEmail(), u.getPw(), u.getName(), u.getAge(), u.getCard(), u.getPlanType());
 			}
 			
 		} catch (Exception e) {
 			em.getTransaction().rollback();
+			
 		} finally {
 			em.close();
 		}
 		return user;
 	}
+	
+//	public boolean UserDTO updateUser(String pw, String newPw) {
+//		EntityManager em = DBUtil.getEntityManager();
+//		em.getTransaction().begin();
+//		boolean result = false;
+//		try {
+//			em.find(Activist.class, primaryKey)
+//		}
+//		return result;
+//	}
 }
