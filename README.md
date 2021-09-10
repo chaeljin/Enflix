@@ -14,29 +14,7 @@
 
 ### 2. 프로젝트 Timeline🗓️
 
-[DB구축 DTO/ENTITY 구성](https://www.notion.so/DB-DTO-ENTITY-08513e76468b4556a33ee2929863895b)
-
-[메인 홈페이지 구축 및 로그인 기능 구축](https://www.notion.so/fdcad5019a884ea688ba6777338da961)
-
-[검색 엔진 및 로그아웃 기능 구축](https://www.notion.so/20985a3169124a108e9b9be0c36e3d84)
-
----
-
-### 3. 모델링
-
-![스크린샷(20).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ff1fb04c-dc4a-49fd-9734-3a0d4a009efc/스크린샷(20).png)
-
----
-
----
-
-### 4. FUNCTION 🛠
-
-![스크린샷(22).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/52e73c34-e669-4140-a558-8b8010cc85d1/스크린샷(22).png)
-
----
-
-### 5. Trouble Shooting 🤦🏻
+### 3. Trouble Shooting 🤦🏻
 
 - 😨구조상 문제가 없으나 두 번 출력되어 null exception 발생
     - HTML의 "submit"과 onclick이 겹쳐져서 null exception 발생
@@ -50,7 +28,7 @@
 
 ---
 
-### 6. 아쉬운 점 😥
+### 4. 아쉬운 점 😥
 
 - 실제 넷플릭스처럼 주제가 같은 영상들을 슬라이드 형식으로 마우스로 클릭하면 옆으로 넘어가게 하고 싶었지만 구현을 하지 못함
 - 메인 화면에 영상이 있을 때 연령 제한이나 등급 제한을 표현하고 싶었으나 실력 관계 상 구현하지 못함
@@ -63,7 +41,7 @@
 
 ---
 
-### 7. 배운 점 😏
+### 5. 배운 점 😏
 
 - 페이지 전환을 이해할 수 있게 됨
 - html → servlet → jsp 로 데이터를 주고 받는 것을 이해하는 데에 많은 도움
