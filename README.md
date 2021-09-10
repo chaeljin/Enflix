@@ -1,4 +1,4 @@
-#Enflix📽️
+# Enflix📽️
 
 ### [곽형림](https://github.com/gudfla1815)👨🏻‍💻 [정은진](https://github.com/chaeljin)(B)👩🏻‍💻 [최해림](https://github.com/choihaerim)👩🏻‍💻
 
